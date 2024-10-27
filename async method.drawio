@@ -208,6 +208,12 @@
             <mxPoint x="150" y="1230" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="TcL-crILwueo8q_Ow-ZN-56" value="Thread" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1520" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TcL-crILwueo8q_Ow-ZN-57" value="Task" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="387.5" y="1560" width="60" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
