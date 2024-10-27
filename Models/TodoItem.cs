@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MJMToDo.Models
 {
-    internal class TodoItem
+    public class TodoItem
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
