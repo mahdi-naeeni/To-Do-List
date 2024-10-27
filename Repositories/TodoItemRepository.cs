@@ -13,6 +13,7 @@ namespace MJMToDo.Repositories
         private SQLiteAsyncConnection connection;
         public event EventHandler<TodoItem> OnItemAdded;
         public event EventHandler<TodoItem> OnItemUpdated;
+
         public async Task<List<TodoItem>> GetItemsAsync()
         {
             await CreateConnectionAsync();
