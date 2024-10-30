@@ -19,23 +19,18 @@ namespace MJMToDo
                 .RegisterViews();
             return builder.Build();
         }
-        public static MauiAppBuilder RegisterServices(this
-    MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterServices(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddSingleton<ITodoItemRepository, TodoItemRepository>();
             return mauiAppBuilder;
         }
-        public static MauiAppBuilder RegisterViewModels(this
-    MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddTransient<ViewModels.
-   MainViewModel>();
-            mauiAppBuilder.Services.AddTransient<ViewModels.
-    ItemViewModel>();
+            mauiAppBuilder.Services.AddTransient<ViewModels.MainViewModel>();
+            mauiAppBuilder.Services.AddTransient<ViewModels.ItemViewModel>();
             return mauiAppBuilder;
         }
-        public static MauiAppBuilder RegisterViews(this
-    MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddTransient<Views.MainView>();
             mauiAppBuilder.Services.AddTransient<Views.ItemView>();
