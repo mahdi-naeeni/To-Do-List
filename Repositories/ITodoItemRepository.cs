@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MJMToDo.Repositories
 {
-    internal interface ITodoItemRepository
+    public interface ITodoItemRepository
     {
         event EventHandler<TodoItem> OnItemAdded;
         event EventHandler<TodoItem> OnItemUpdated;
