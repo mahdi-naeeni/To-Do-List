@@ -13,9 +13,6 @@ namespace MJMToDo.ViewModels
     public partial class ItemViewModel : ViewModel
     {
         private readonly ITodoItemRepository repository;
-
-        public TodoItem Item { get; }
-
         [ObservableProperty]
         TodoItem item;
         public ItemViewModel(ITodoItemRepository repository)

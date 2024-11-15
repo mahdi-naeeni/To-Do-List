@@ -4,7 +4,13 @@
              xmlns:viewModels="clr-namespace:MJMToDo.ViewModels"
              x:Class="MJMToDo.Views.MainView"
              x:DataType="viewModels:MainViewModel"
+             xmlns:converters="clr-namespace:MJMToDo.Converters"
              Title="Do Too!">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StatusColorConverter x:Key="statusColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
@@ -14,8 +20,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Button Text="Toggle filter" />
-        
-        <ListView Grid.Row="1" RowHeight="70" ItemsSource="{Binding Items}">
+
+        <ListView x:Name="ItemsListView" Grid.Row="1" RowHeight="70" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:TodoItemViewModel">
                     <ViewCell>
@@ -28,7 +34,9 @@
                                 <ColumnDefinition Width="10" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <BoxView Grid.RowSpan="2" />
+                            <BoxView Grid.RowSpan="2"
+                               BackgroundColor="{Binding Item.Completed,
+                             Converter={StaticResource statusColorConverter}}" />
                             <Label Grid.Column="1"
             Text="{Binding Item.Title}" FontSize="Medium" />
                             <Label Grid.Column="1" Grid.Row="1"
@@ -41,6 +49,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            
         </ListView>
     </Grid>
 </ContentPage>

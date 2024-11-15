@@ -6,7 +6,7 @@
              x:DataType="viewModels:ItemViewModel" 
     Title="New todo item">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="{Binding SaveAsyncCommand}" />
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand }" />
     </ContentPage.ToolbarItems>
     <StackLayout Padding="14">
         <Label Text="Title" />

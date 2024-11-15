@@ -19,8 +19,8 @@ namespace MJMToDo.ViewModels
         private readonly IServiceProvider services;
         [ObservableProperty]
         ObservableCollection<TodoItemViewModel> items;
-
-        public ObservableCollection<TodoItemViewModel> Items { get; private set; }
+        [ObservableProperty]
+        TodoItemViewModel selectedItem;
 
         public MainViewModel(ITodoItemRepository repository, IServiceProvider services)
         {
@@ -50,6 +50,32 @@ namespace MJMToDo.ViewModels
         }
         private void ItemStatusChanged(object sender, EventArgs e)
         {
+        }
+
+
+
+        partial void OnSelectedItemChanging(TodoItemViewModel value)
+        {
+            if (value == null)
+            {
+                return;
+            }
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await NavigateToItemAsync(value);
+            });
+        }
+        private async Task NavigateToItemAsync(TodoItemViewModel item)
+        {
+            var itemView = services.GetRequiredService<ItemView>();
+            var vm = itemView.BindingContext as ItemViewModel;
+            vm.Item = item.Item;
+            itemView.Title = "Edit todo item";
+            await Navigation.PushAsync(itemView);
+
+
+
+
         }
     }
 }
