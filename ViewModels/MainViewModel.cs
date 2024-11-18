@@ -36,6 +36,10 @@ namespace MJMToDo.ViewModels
         private async Task LoadDataAsync()
         {
             var items = await repository.GetItemsAsync();
+            if (!showAll)
+            {
+                items = items.Where(x => x.Completed == false).ToList();
+            }
             var itemViewModels = items.Select(i => CreateTodoItemViewModel(i));
             Items = new ObservableCollection<TodoItemViewModel>
         (itemViewModels);
@@ -50,7 +54,17 @@ namespace MJMToDo.ViewModels
         }
         private void ItemStatusChanged(object sender, EventArgs e)
         {
+            if (sender is TodoItemViewModel item)
+            {
+                if (!showAll && item.Item.Completed)
+                {
+                    Items.Remove(item);
+                }
+                Task.Run(async () => await repository.UpdateItemAsync(item.Item));
+            }
         }
+        [ObservableProperty]
+        bool showAll;
 
 
 
@@ -76,6 +90,12 @@ namespace MJMToDo.ViewModels
 
 
 
+        }
+        [RelayCommand]
+        private async Task ToggleFilterAsync()
+        {
+            showAll = !showAll;
+            await LoadDataAsync();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MJMToDo.Models;
-
+using CommunityToolkit.Mvvm.Input;
 namespace MJMToDo.ViewModels
 {
 
@@ -16,5 +16,11 @@ namespace MJMToDo.ViewModels
          [ObservableProperty]
          TodoItem item;
          public string StatusText => Item.Completed ? "Reactivate" : "Completed";
+        [RelayCommand]
+        void ToggleCompleted()
+        {
+            Item.Completed = !Item.Completed;
+            ItemStatusChanged?.Invoke(this, new EventArgs());
+        }
     }   
 }
