@@ -33,7 +33,8 @@
             </Button.Triggers>
         </Button>
 
-        <ListView x:Name="ItemsListView" Grid.Row="1" RowHeight="70" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+        <ListView x:Name="ItemsListView" Grid.Row="1" RowHeight="70" 
+                  ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:TodoItemViewModel">
                     <ViewCell>
@@ -53,10 +54,13 @@
                                BackgroundColor="{Binding Item.Completed,
                              Converter={StaticResource statusColorConverter}}" />
                             <Label Grid.Column="1" Text="{Binding Item.Title}" FontSize="Medium" />
-                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Item.Due, StringFormat='{0:MMMM d, yyyy}'}" FontSize="Micro" />
-                            <Label Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="End" Text="Completed" IsVisible="{Binding Item.Completed}" FontSize="Micro" TextColor="{StaticResource CompletedColor}"/>
+                            <Label Grid.Column="1" Grid.Row="1" 
+                                   Text="{Binding Item.Due, StringFormat='{0:MMMM d, yyyy}'}" FontSize="Micro" />
+                            <Label Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="End" Text="Completed"
+                                   IsVisible="{Binding Item.Completed}" 
+                                   FontSize="Micro" TextColor="{StaticResource CompletedColor}"/>
                         </Grid>
-                    </ViewCell>s
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
             
